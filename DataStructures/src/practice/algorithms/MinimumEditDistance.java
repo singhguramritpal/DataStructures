@@ -76,4 +76,35 @@ public class MinimumEditDistance {
 		System.out.println(word);
 		return arr[n][m];
 	}
+
+	public int minimumEditDistance(String str1, String str2){
+		int dis = 0;
+		int row = str1.length();
+		int col = str2.length();
+		int arr[][] = new int[row][col];
+		for(int i=0; i<row; i++){
+			arr[i][0] = i;
+		}
+		for(int i=0; i<row; i++){
+			arr[0][i] = i;
+		}
+		for(int i=1; i<row; i++){
+			for(int j=1; j<col; j++){
+				if(str1.charAt(i-1) != str2.charAt(j-1)){
+					int min = Math.min(arr[i-1][j]+1, arr[i][j-1]+1);
+					min = Math.min(min, arr[i-1][j-1]+2);
+					arr[i][j] = min;
+				} else{
+					int min = Math.min(arr[i-1][j]+1, arr[i][j-1]+1);
+					min = Math.min(min, arr[i-1][j-1]);
+					arr[i][j] = min;
+				}
+			}
+		}
+		
+		dis = arr[row-1][col-1];
+		System.out.println(dis);
+		return dis;
+	}
+
 }

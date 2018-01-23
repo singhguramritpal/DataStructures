@@ -10,5 +10,9 @@ public class MinimumEditDistanceTest {
 		int dis = editDistance.minimumEditDitanceDP("execution","intention");
 		System.out.println(dis);
 	}
-
+	@Test
+	public void testMinimumEditDitance() {
+		int dis = editDistance.minimumEditDistance("execution","intention");
+		System.out.println(dis);
+	}
 }
